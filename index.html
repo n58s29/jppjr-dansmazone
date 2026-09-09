@@ -40,6 +40,7 @@
   .btn{
     border:none;border-radius:6px;padding:9px 16px;font-size:14px;font-weight:600;
     cursor:pointer;font-family:inherit;transition:filter .12s;
+    text-decoration:none;display:inline-flex;align-items:center;
   }
   .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
   .btn-primary{background:var(--red);color:#fff}
@@ -159,6 +160,7 @@
   <span id="status">Aucun fichier chargé</span>
   <div class="progress" id="progress"><i id="progressBar"></i></div>
   <button class="btn btn-ghost hidden" id="btnCsv">Exporter le CSV</button>
+  <a class="btn btn-ghost" href="https://n58s29.github.io/jppjr-planning/" target="_blank" rel="noopener">Planning de la team</a>
   <button class="btn btn-primary" id="btnImport">Importer un dossier</button>
   <input type="file" id="dirInput" webkitdirectory multiple class="hidden">
 </header>
