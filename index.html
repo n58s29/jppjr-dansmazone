@@ -1,1 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dans Ma Zone — Team JPPJR</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root{
+    --red:#E31837;
+    --red-dark:#B81029;
+    --red-soft:#FBE9EC;
+    --ink:#1E1E28;
+    --ink-2:#6D6D78;
+    --line:#E5E1DA;
+    --bg:#F6F4F0;
+    --card:#FFFFFF;
+    --green:#1D9E6F;
+    --amber:#C77800;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Avenir Next",Avenir,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45;
+  }
+  header{
+    background:var(--card);border-bottom:1px solid var(--line);
+    padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    position:sticky;top:0;z-index:1100;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .logo{width:34px;height:34px;object-fit:contain}
+  .brand h1{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .badge{
+    background:var(--red-soft);color:var(--red);font-size:11.5px;font-weight:700;
+    padding:3px 9px;border-radius:999px;letter-spacing:.02em;
+  }
+  .spacer{flex:1}
+  .btn{
+    border:none;border-radius:6px;padding:9px 16px;font-size:14px;font-weight:600;
+    cursor:pointer;font-family:inherit;transition:filter .12s;
+  }
+  .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{background:var(--red-dark)}
+  .btn-ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--bg)}
+  .btn[disabled]{opacity:.45;cursor:default}
+  #status{font-size:13px;color:var(--ink-2)}
+  #status strong{color:var(--ink)}
+  .progress{height:3px;background:var(--line);border-radius:2px;overflow:hidden;width:180px;display:none}
+  .progress i{display:block;height:100%;width:0;background:var(--red);transition:width .15s}
 
+  main{max-width:1240px;margin:0 auto;padding:20px 24px 60px}
+
+  .hero{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:32px 34px;margin-bottom:18px;
+  }
+  .hero h2{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.2;max-width:640px}
+  .hero h2 em{font-style:normal;color:var(--red)}
+  .hero p{color:var(--ink-2);font-size:15.5px;max-width:600px;margin:10px 0 18px}
+  .hero-points{list-style:none;display:flex;gap:10px 24px;flex-wrap:wrap;margin:16px 0 0;font-size:13.5px;color:var(--ink-2)}
+  .hero-points li{display:flex;align-items:center;gap:8px}
+  .hero-points li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
+  .hero details{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;max-width:640px}
+  .hero summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--ink)}
+  .hero summary:hover{color:var(--red)}
+  .hero details p{font-size:13.5px;margin:10px 0 0}
+  .hero details b{color:var(--ink)}
+
+  .steps{
+    display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;
+  }
+  .step{
+    flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);
+    border-radius:8px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;
+    font-size:13.5px;color:var(--ink-2);
+  }
+  .step b{color:var(--ink);display:block;margin-bottom:2px;font-size:14px}
+  .step .n{
+    background:var(--red-soft);color:var(--red);font-weight:700;
+    width:24px;height:24px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;flex:none;font-size:13px;
+  }
+  .step.done .n{background:var(--red);color:#fff}
+
+  .filters{margin-bottom:18px}
+  .filters h2{margin-bottom:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px;font-size:13.5px;cursor:pointer;user-select:none;background:var(--bg);color:var(--ink-2)}
+  .chip input{accent-color:var(--red)}
+  .chip.on{background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+  .chip .c{font-size:12px;opacity:.75}
+  .link-btn{background:none;border:none;color:var(--ink-2);font-size:12.5px;cursor:pointer;
+    text-decoration:underline;font-family:inherit;margin-left:10px}
+  .link-btn:hover{color:var(--ink)}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+  .kpi .v{font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .kpi .v small{font-size:14px;font-weight:600;color:var(--ink-2)}
+  .kpi .l{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .kpi.hero{background:var(--red);border-color:var(--red)}
+  .kpi.hero .v,.kpi.hero .l{color:#fff}
+  .kpi.hero .l{opacity:.85}
+
+  .map-wrap{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+  #map{height:520px;width:100%}
+  .map-hint{
+    position:absolute;inset:0;background:rgba(246,244,240,.88);z-index:1000;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--ink-2);font-size:15px;padding:20px;
+  }
+  .map-tools{
+    position:absolute;top:12px;right:12px;z-index:1001;background:var(--card);
+    border:1px solid var(--line);border-radius:8px;padding:8px 12px;
+    display:flex;gap:14px;align-items:center;font-size:13px;
+    box-shadow:0 1px 4px rgba(36,36,40,.08);
+  }
+  .map-tools label{display:flex;gap:6px;align-items:center;cursor:pointer;color:var(--ink)}
+  .map-tools input{accent-color:var(--red)}
+  .btn-sm{padding:6px 12px;font-size:13px}
+  .drawing #map{cursor:crosshair}
+  .draw-tip{
+    position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:1001;
+    background:var(--ink);color:#fff;font-size:13px;padding:8px 14px;border-radius:6px;
+    box-shadow:0 2px 8px rgba(36,36,40,.25);white-space:nowrap;
+  }
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  @media(max-width:860px){.grid-2{grid-template-columns:1fr}#map{height:420px}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .card h2{font-size:15px;font-weight:600;margin-bottom:12px}
+  .card h2 span{color:var(--ink-2);font-weight:400;font-size:13px}
+  .chart-box{position:relative;height:260px}
+
+  .table-card{margin-top:18px}
+  .table-head{display:flex;align-items:center;margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;color:var(--ink-2);font-weight:600;font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th.r,td.r{text-align:right}
+  td{padding:8px 10px;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  td .fname{color:var(--ink-2);font-size:12px;display:block;max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .km-cell{font-weight:700;color:var(--red)}
+  .muted{color:var(--ink-2);font-size:13px}
+  .hidden{display:none}
+  .leaflet-draw-toolbar a{background-color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><img class="logo" src="data:image/png;base64,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" alt="Bob Team JPPJR"><h1>Dans Ma Zone</h1><span class="badge">Team JPPJR</span></div>
+  <div class="spacer"></div>
+  <span id="status">Aucun fichier chargé</span>
+  <div class="progress" id="progress"><i id="progressBar"></i></div>
+  <button class="btn btn-ghost hidden" id="btnCsv">Exporter le CSV</button>
+  <button class="btn btn-primary" id="btnImport">Importer un dossier</button>
+  <input type="file" id="dirInput" webkitdirectory multiple class="hidden">
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <h2>Combien de kilomètres as-tu vraiment mis <em>dans ta zone</em> ?</h2>
+    <p>Importe tes traces, dessine ta zone : place aux chiffres.<br>
+    Signé la team JPPJR — Je peux pas j'ai running.</p>
+    <button class="btn btn-primary" id="btnHeroImport">Importer mes traces (GPX / TCX)</button>
+    <ul class="hero-points">
+      <li>100&nbsp;% local : tes fichiers ne quittent jamais ton navigateur</li>
+      <li>Toutes montres : Garmin, Strava, Suunto, Coros, Polar…</li>
+      <li>Gratuit, sans compte, sans installation</li>
+    </ul>
+    <details>
+      <summary>Où récupérer tes traces GPS ?</summary>
+      <p><b>Strava</b> — Paramètres → Mon compte → « Télécharger ou supprimer votre compte » :
+      tu reçois une archive avec toutes tes activités d'un coup.</p>
+      <p><b>Garmin</b> — Export complet depuis garmin.com (Compte → Gestion des données),
+      ou activité par activité dans Garmin Connect (engrenage → Exporter en GPX/TCX).</p>
+      <p><b>Suunto, Coros, Polar</b> — Export GPX depuis l'application ou le site web
+      (Polar Flow, Coros Training Hub…), activité par activité ou via l'export de données du compte.</p>
+      <p>Dézippe tout dans un dossier, importe-le ici : les sous-dossiers sont pris en compte.</p>
+    </details>
+  </section>
+
+  <div class="steps">
+    <div class="step" id="step1"><span class="n">1</span><div><b>Importer</b>Sélectionnez le dossier contenant vos GPX / TCX (sous-dossiers inclus).</div></div>
+    <div class="step" id="step2"><span class="n">2</span><div><b>Dessiner la zone</b>Bouton « Dessiner une zone » en haut à droite de la carte : cliquez pour poser les sommets, double-clic pour fermer.</div></div>
+    <div class="step" id="step3"><span class="n">3</span><div><b>Analyser</b>Les kilomètres dans la zone, les passages et les graphiques se calculent aussitôt.</div></div>
+  </div>
+
+  <div class="card filters hidden" id="filters">
+    <h2>Types d'activité <span>— cochez ce qui compte dans le calcul et sur la carte</span>
+      <button class="link-btn" id="btnRunOnly">course à pied uniquement</button>
+      <button class="link-btn" id="btnAllSports">tout</button>
+    </h2>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="kpis hidden" id="kpis">
+    <div class="kpi hero"><div class="v" id="kKm">0 <small>km</small></div><div class="l">parcourus dans la zone</div></div>
+    <div class="kpi"><div class="v" id="kActs">0</div><div class="l">activités dans la zone</div></div>
+    <div class="kpi"><div class="v" id="kPass">0</div><div class="l">passages (entrées en zone)</div></div>
+    <div class="kpi"><div class="v" id="kAvg">0 <small>km</small></div><div class="l">moyenne par activité</div></div>
+    <div class="kpi"><div class="v" id="kBest">—</div><div class="l" id="kBestL">année la plus active</div></div>
+  </div>
+
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="map-hint" id="mapHint">Importez d'abord vos fichiers, la carte se centrera sur vos traces.</div>
+    <div class="map-tools">
+      <button class="btn btn-primary btn-sm" id="btnDraw">Dessiner une zone</button>
+      <button class="btn btn-ghost btn-sm hidden" id="btnClearZone">Supprimer la zone</button>
+      <label><input type="checkbox" id="chkHeat" checked> Traces</label>
+    </div>
+  </div>
+
+  <div class="grid-2 hidden" id="charts">
+    <div class="card">
+      <h2>Kilomètres dans la zone par année <span>· nombre d'activités en ligne</span></h2>
+      <div class="chart-box"><canvas id="chartYear"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Saisonnalité <span>· km dans la zone par mois, toutes années confondues</span></h2>
+      <div class="chart-box"><canvas id="chartMonth"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card table-card hidden" id="tableCard">
+    <div class="table-head">
+      <h2>Activités traversant la zone <span id="tableInfo"></span></h2>
+    </div>
+    <table>
+      <thead><tr>
+        <th>Date</th><th>Activité</th><th>Sport</th>
+        <th class="r">Km en zone</th><th class="r">Km total</th><th class="r">Passages</th>
+      </tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+"use strict";
+
+/* ---------- État global ---------- */
+const activities = [];   // {name, ts, year, month, pts:Float32Array, bbox:[minLa,minLo,maxLa,maxLo], totalKm}
+let zoneRing = null;     // [[lat,lng],...]
+let lastResults = [];    // résultats du dernier calcul de zone
+let chartYear = null, chartMonth = null;
+const activeSports = new Set();
+function filtered() { return activities.filter(a => activeSports.has(a.sport)); }
+
+function buildFilters() {
+  const counts = new Map();
+  for (const a of activities) counts.set(a.sport, (counts.get(a.sport) || 0) + 1);
+  const sorted = [...counts.entries()].sort((x, y) => y[1] - x[1]);
+  activeSports.clear();
+  const box = document.getElementById("chips");
+  box.innerHTML = "";
+  for (const [sport, n] of sorted) {
+    activeSports.add(sport);
+    const chip = document.createElement("label");
+    chip.className = "chip on";
+    chip.dataset.sport = sport;
+    chip.innerHTML = "<input type='checkbox' checked> " + esc(sport) +
+      " <span class='c'>" + n.toLocaleString("fr-FR") + "</span>";
+    chip.querySelector("input").addEventListener("change", e => {
+      if (e.target.checked) activeSports.add(sport); else activeSports.delete(sport);
+      chip.classList.toggle("on", e.target.checked);
+      refreshAfterFilter();
+    });
+    box.appendChild(chip);
+  }
+  document.getElementById("filters").classList.remove("hidden");
+}
+
+function setSports(predicate) {
+  activeSports.clear();
+  document.querySelectorAll("#chips .chip").forEach(chip => {
+    const sport = chip.dataset.sport;
+    const on = predicate(sport);
+    if (on) activeSports.add(sport);
+    chip.classList.toggle("on", on);
+    chip.querySelector("input").checked = on;
+  });
+  refreshAfterFilter();
+}
+document.getElementById("btnRunOnly").addEventListener("click", () => setSports(s => s === "Course à pied"));
+document.getElementById("btnAllSports").addEventListener("click", () => setSports(() => true));
+
+function refreshAfterFilter() {
+  drawHeatmap();
+  if (zoneRing) computeZone(); else resetResults();
+}
+const MONTHS = ["Jan","Fév","Mar","Avr","Mai","Juin","Juil","Août","Sep","Oct","Nov","Déc"];
+
+/* ---------- Géométrie ---------- */
+const R = 6371000, RAD = Math.PI / 180;
+function hav(la1, lo1, la2, lo2) {
+  const dLa = (la2 - la1) * RAD, dLo = (lo2 - lo1) * RAD;
+  const a = Math.sin(dLa/2)**2 + Math.cos(la1*RAD) * Math.cos(la2*RAD) * Math.sin(dLo/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+function pip(lat, lng, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const yi = ring[i][0], xi = ring[i][1], yj = ring[j][0], xj = ring[j][1];
+    if (((yi > lat) !== (yj > lat)) && (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi)) inside = !inside;
+  }
+  return inside;
+}
+
+/* ---------- Parsing GPX / TCX (regex : rapide sur des milliers de fichiers) ---------- */
+const DOWNSAMPLE_M = 12; // on garde un point tous les ~12 m
+
+/* Détection du sport.
+   TCX : <Activity Sport="Running">. GPX Garmin : <type>running</type>.
+   GPX Strava (anciens exports) : <type> numérique — 1=vélo, 4=rando, 9=course, 10=marche. */
+const STRAVA_CODES = { "1": "Vélo", "4": "Marche / Rando", "9": "Course à pied", "10": "Marche / Rando", "11": "Renfo / Autre" };
+function sportKeyword(t) {
+  t = t.toLowerCase();
+  if (/run|course|jog|trail/.test(t)) return "Course à pied";
+  if (/bik|cycl|ride|velo|v\u00e9lo|vtt|gravel/.test(t)) return "Vélo";
+  if (/hik|walk|march|rando/.test(t)) return "Marche / Rando";
+  if (/swim|natation/.test(t)) return "Natation";
+  if (/ski|snowboard/.test(t)) return "Ski / Neige";
+  return null;
+}
+function detectSport(txt, isTcx, name) {
+  let s = "";
+  if (isTcx) {
+    const m = /<Activity\s+Sport="([^"]+)"/i.exec(txt);
+    s = m ? m[1].trim() : "";
+  } else {
+    const m = /<type>([^<]*)<\/type>/i.exec(txt);
+    s = m ? m[1].trim() : "";
+  }
+  if (s && STRAVA_CODES[s]) return STRAVA_CODES[s];
+  const fromTag = s && sportKeyword(s);
+  if (fromTag) return fromTag;
+  if (s && !/^\d+$/.test(s)) return s.charAt(0).toUpperCase() + s.slice(1); // valeur brute lisible
+  return sportKeyword(name || "") || "Non renseigné";
+}
+
+function extractPoints(txt, isTcx) {
+  const raw = [];
+  if (isTcx) {
+    const re = /<LatitudeDegrees>\s*(-?[\d.]+)\s*<\/LatitudeDegrees>\s*<LongitudeDegrees>\s*(-?[\d.]+)\s*<\/LongitudeDegrees>/g;
+    let m; while ((m = re.exec(txt))) raw.push(+m[1], +m[2]);
+  } else {
+    const re = /<trkpt\b([^>]*)>/g;
+    let m;
+    while ((m = re.exec(txt))) {
+      const la = /lat="(-?[\d.]+)"/.exec(m[1]);
+      const lo = /lon="(-?[\d.]+)"/.exec(m[1]);
+      if (la && lo) raw.push(+la[1], +lo[1]);
+    }
+  }
+  return raw;
+}
+
+function parseActivity(name, txt) {
+  const isTcx = /\.tcx$/i.test(name) || txt.indexOf("<TrainingCenterDatabase") !== -1;
+  const raw = extractPoints(txt, isTcx);
+  if (raw.length < 4) return null;
+
+  // Date : première balise <time>/<Id> trouvée
+  const tm = /<time>([^<]+)<\/time>/.exec(txt) || /<Id>([^<]+)<\/Id>/.exec(txt) || /<Time>([^<]+)<\/Time>/.exec(txt);
+  const ts = tm ? Date.parse(tm[1]) : NaN;
+
+  // Downsampling + distance totale + bbox
+  const kept = [raw[0], raw[1]];
+  let lastLa = raw[0], lastLo = raw[1], totalM = 0;
+  let minLa = lastLa, maxLa = lastLa, minLo = lastLo, maxLo = lastLo;
+  for (let i = 2; i < raw.length; i += 2) {
+    const la = raw[i], lo = raw[i+1];
+    const d = hav(lastLa, lastLo, la, lo);
+    if (d >= DOWNSAMPLE_M) {
+      if (d < 10000) totalM += d; // ignore les sauts GPS aberrants (>10 km entre 2 points)
+      kept.push(la, lo);
+      lastLa = la; lastLo = lo;
+      if (la < minLa) minLa = la; if (la > maxLa) maxLa = la;
+      if (lo < minLo) minLo = lo; if (lo > maxLo) maxLo = lo;
+    }
+  }
+  if (kept.length < 4) return null;
+  const dt = isNaN(ts) ? null : new Date(ts);
+  return {
+    name: name.replace(/\.(gpx|tcx)$/i, ""),
+    sport: detectSport(txt, isTcx, name),
+    ts: isNaN(ts) ? 0 : ts,
+    year: dt ? dt.getFullYear() : 0,
+    month: dt ? dt.getMonth() : 0,
+    pts: Float32Array.from(kept),
+    bbox: [minLa, minLo, maxLa, maxLo],
+    totalKm: totalM / 1000
+  };
+}
+
+/* ---------- Import du dossier ---------- */
+const dirInput = document.getElementById("dirInput");
+const statusEl = document.getElementById("status");
+const progress = document.getElementById("progress");
+const progressBar = document.getElementById("progressBar");
+
+document.getElementById("btnImport").addEventListener("click", () => dirInput.click());
+document.getElementById("btnHeroImport").addEventListener("click", () => dirInput.click());
+
+dirInput.addEventListener("change", async () => {
+  const files = Array.from(dirInput.files).filter(f => /\.(gpx|tcx)$/i.test(f.name));
+  if (!files.length) { statusEl.textContent = "Aucun GPX/TCX dans ce dossier."; return; }
+
+  activities.length = 0;
+  heatGroup.clearLayers();
+  let errors = 0, done = 0;
+  progress.style.display = "block";
+  document.getElementById("btnImport").disabled = true;
+
+  for (const f of files) {
+    try {
+      const a = parseActivity(f.name, await f.text());
+      if (a) activities.push(a); else errors++;
+    } catch { errors++; }
+    done++;
+    if (done % 20 === 0 || done === files.length) {
+      progressBar.style.width = (done / files.length * 100) + "%";
+      statusEl.innerHTML = "Lecture… <strong>" + done + "</strong> / " + files.length;
+      await new Promise(r => setTimeout(r, 0)); // rend la main à l'UI
+    }
+  }
+
+  progress.style.display = "none";
+  document.getElementById("btnImport").disabled = false;
+  progressBar.style.width = "0";
+
+  const totalKm = activities.reduce((s, a) => s + a.totalKm, 0);
+  statusEl.innerHTML = "<strong>" + activities.length + "</strong> activités · " +
+    fmtKm(totalKm) + " km au total" + (errors ? " · " + errors + " fichiers ignorés" : "");
+  document.getElementById("step1").classList.add("done");
+  if (activities.length) document.getElementById("hero").classList.add("hidden");
+
+  buildFilters();
+  drawHeatmap();
+  fitToData();
+  document.getElementById("mapHint").textContent = "Cliquez sur « Dessiner une zone » en haut à droite de la carte.";
+  setTimeout(() => document.getElementById("mapHint").style.display = "none", 3500);
+  if (zoneRing) computeZone(); // recalcul si une zone existait déjà
+});
+
+/* ---------- Carte ---------- */
+const map = L.map("map", { zoomControl: true }).setView([46.6, 2.4], 6); // France entière
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; contributeurs OpenStreetMap', maxZoom: 19
+}).addTo(map);
+
+const canvasRenderer = L.canvas({ padding: 0.3 });
+const heatGroup = L.layerGroup().addTo(map);
+
+const zoneStyle = { color: "#E31837", weight: 2, fillColor: "#E31837", fillOpacity: 0.08 };
+
+/* ---------- Dessin de la zone (sans plugin) ---------- */
+let drawing = false, drawPts = [], zoneLayer = null;
+let tempLine = null, tempMarkers = [], drawTip = null;
+const btnDraw = document.getElementById("btnDraw");
+const btnClearZone = document.getElementById("btnClearZone");
+const mapWrap = document.querySelector(".map-wrap");
+
+btnDraw.addEventListener("click", () => drawing ? finishDraw() : startDraw());
+btnClearZone.addEventListener("click", clearZone);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && drawing) cancelDraw(); });
+
+function startDraw() {
+  clearZone();
+  drawing = true; drawPts = [];
+  map.doubleClickZoom.disable();
+  mapWrap.classList.add("drawing");
+  btnDraw.textContent = "Terminer la zone";
+  document.getElementById("mapHint").style.display = "none";
+  drawTip = document.createElement("div");
+  drawTip.className = "draw-tip";
+  drawTip.textContent = "Cliquez pour poser les sommets · double-clic ou clic sur le 1er point pour fermer · Échap pour annuler";
+  mapWrap.appendChild(drawTip);
+}
+
+map.on("click", e => {
+  if (!drawing) return;
+  drawPts.push([e.latlng.lat, e.latlng.lng]);
+  if (tempLine) tempLine.setLatLngs(drawPts);
+  else tempLine = L.polyline(drawPts, { color: "#E31837", weight: 2, dashArray: "6 4" }).addTo(map);
+  const mk = L.circleMarker(e.latlng, {
+    radius: drawPts.length === 1 ? 8 : 5, color: "#E31837",
+    fillColor: "#fff", fillOpacity: 1, weight: 2
+  }).addTo(map);
+  if (drawPts.length === 1) mk.on("click", ev => { L.DomEvent.stopPropagation(ev); finishDraw(); });
+  tempMarkers.push(mk);
+});
+map.on("dblclick", () => { if (drawing) finishDraw(); });
+
+function cleanupDraw() {
+  drawing = false;
+  map.doubleClickZoom.enable();
+  mapWrap.classList.remove("drawing");
+  btnDraw.textContent = "Dessiner une zone";
+  if (tempLine) { map.removeLayer(tempLine); tempLine = null; }
+  tempMarkers.forEach(m => map.removeLayer(m)); tempMarkers = [];
+  if (drawTip) { drawTip.remove(); drawTip = null; }
+}
+
+function cancelDraw() { cleanupDraw(); drawPts = []; }
+
+function finishDraw() {
+  // retire les doublons consécutifs (le double-clic génère deux clics au même endroit)
+  const pts = drawPts.filter((p, i) => i === 0 || p[0] !== drawPts[i-1][0] || p[1] !== drawPts[i-1][1]);
+  cleanupDraw();
+  if (pts.length < 3) { drawPts = []; return; }
+  zoneRing = pts;
+  zoneLayer = L.polygon(pts, zoneStyle).addTo(map);
+  btnClearZone.classList.remove("hidden");
+  document.getElementById("step2").classList.add("done");
+  computeZone();
+}
+
+function clearZone() {
+  if (zoneLayer) { map.removeLayer(zoneLayer); zoneLayer = null; }
+  zoneRing = null;
+  btnClearZone.classList.add("hidden");
+  resetResults();
+}
+
+function drawHeatmap() {
+  heatGroup.clearLayers();
+  for (const a of filtered()) {
+    const pts = a.pts;
+    const stride = Math.max(1, Math.floor(pts.length / 2 / 300)); // ~300 pts max affichés par trace
+    const latlngs = [];
+    for (let i = 0; i < pts.length; i += 2 * stride) latlngs.push([pts[i], pts[i+1]]);
+    L.polyline(latlngs, { renderer: canvasRenderer, color: "#E31837", weight: 2, opacity: 0.13, interactive: false })
+      .addTo(heatGroup);
+  }
+}
+document.getElementById("chkHeat").addEventListener("change", e => {
+  if (e.target.checked) map.addLayer(heatGroup); else map.removeLayer(heatGroup);
+});
+
+function fitToData() {
+  if (!activities.length) return;
+  let minLa = 90, minLo = 180, maxLa = -90, maxLo = -180;
+  for (const a of activities) {
+    if (a.bbox[0] < minLa) minLa = a.bbox[0];
+    if (a.bbox[1] < minLo) minLo = a.bbox[1];
+    if (a.bbox[2] > maxLa) maxLa = a.bbox[2];
+    if (a.bbox[3] > maxLo) maxLo = a.bbox[3];
+  }
+  map.fitBounds([[minLa, minLo], [maxLa, maxLo]], { padding: [30, 30] });
+}
+
+/* ---------- Calcul de zone ---------- */
+function computeZone() {
+  if (!zoneRing || !activities.length) return;
+
+  let zMinLa = 90, zMinLo = 180, zMaxLa = -90, zMaxLo = -180;
+  for (const [la, lo] of zoneRing) {
+    if (la < zMinLa) zMinLa = la; if (la > zMaxLa) zMaxLa = la;
+    if (lo < zMinLo) zMinLo = lo; if (lo > zMaxLo) zMaxLo = lo;
+  }
+
+  lastResults = [];
+  for (const a of filtered()) {
+    const [bMinLa, bMinLo, bMaxLa, bMaxLo] = a.bbox;
+    if (bMaxLa < zMinLa || bMinLa > zMaxLa || bMaxLo < zMinLo || bMinLo > zMaxLo) continue;
+
+    const pts = a.pts;
+    let m = 0, passages = 0;
+    let prevLa = pts[0], prevLo = pts[1];
+    let prevIn = pip(prevLa, prevLo, zoneRing);
+    if (prevIn) passages = 1;
+    for (let i = 2; i < pts.length; i += 2) {
+      const la = pts[i], lo = pts[i+1];
+      const curIn = pip(la, lo, zoneRing);
+      if (curIn || prevIn) {
+        const d = hav(prevLa, prevLo, la, lo);
+        if (d < 10000) m += (curIn && prevIn) ? d : d / 2;
+      }
+      if (curIn && !prevIn) passages++;
+      prevLa = la; prevLo = lo; prevIn = curIn;
+    }
+    if (m > 0) lastResults.push({ a, km: m / 1000, passages });
+  }
+  lastResults.sort((x, y) => y.km - x.km);
+  renderResults();
+}
+
+function resetResults() {
+  lastResults = [];
+  document.getElementById("kpis").classList.add("hidden");
+  document.getElementById("charts").classList.add("hidden");
+  document.getElementById("tableCard").classList.add("hidden");
+  document.getElementById("btnCsv").classList.add("hidden");
+}
+
+/* ---------- Rendu résultats ---------- */
+function fmtKm(v) { return v >= 100 ? Math.round(v).toLocaleString("fr-FR") : v.toFixed(1).replace(".", ","); }
+
+function renderResults() {
+  const totalKm = lastResults.reduce((s, r) => s + r.km, 0);
+  const totalPass = lastResults.reduce((s, r) => s + r.passages, 0);
+  const n = lastResults.length;
+
+  const byYear = new Map(), byMonth = new Array(12).fill(0);
+  for (const r of lastResults) {
+    const y = r.a.year || 0;
+    if (!byYear.has(y)) byYear.set(y, { km: 0, n: 0 });
+    const e = byYear.get(y); e.km += r.km; e.n++;
+    byMonth[r.a.month] += r.km;
+  }
+  let bestYear = "—", bestKm = 0;
+  for (const [y, e] of byYear) if (y && e.km > bestKm) { bestKm = e.km; bestYear = y; }
+
+  document.getElementById("kKm").innerHTML = fmtKm(totalKm) + " <small>km</small>";
+  document.getElementById("kActs").textContent = n.toLocaleString("fr-FR");
+  document.getElementById("kPass").textContent = totalPass.toLocaleString("fr-FR");
+  document.getElementById("kAvg").innerHTML = fmtKm(n ? totalKm / n : 0) + " <small>km</small>";
+  document.getElementById("kBest").textContent = bestYear;
+  document.getElementById("kBestL").textContent = bestYear === "—" ? "année la plus active" :
+    "année la plus active · " + fmtKm(bestKm) + " km";
+
+  document.getElementById("kpis").classList.remove("hidden");
+  document.getElementById("charts").classList.remove("hidden");
+  document.getElementById("tableCard").classList.remove("hidden");
+  document.getElementById("btnCsv").classList.remove("hidden");
+  document.getElementById("step3").classList.add("done");
+
+  // Graphique années
+  const years = [...byYear.keys()].filter(y => y).sort();
+  const kmData = years.map(y => +byYear.get(y).km.toFixed(1));
+  const nData = years.map(y => byYear.get(y).n);
+  if (chartYear) chartYear.destroy();
+  chartYear = new Chart(document.getElementById("chartYear"), {
+    data: {
+      labels: years,
+      datasets: [
+        { type: "bar", label: "km en zone", data: kmData, backgroundColor: "#E31837", borderRadius: 4, yAxisID: "y" },
+        { type: "line", label: "activités", data: nData, borderColor: "#1D9E6F", backgroundColor: "#1D9E6F", pointRadius: 3, tension: .25, yAxisID: "y2" }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { boxWidth: 12, font: { size: 12 } } } },
+      scales: {
+        y: { title: { display: true, text: "km" }, grid: { color: "#ECE8E1" } },
+        y2: { position: "right", grid: { display: false }, title: { display: true, text: "activités" }, ticks: { precision: 0 } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Graphique saisonnalité
+  if (chartMonth) chartMonth.destroy();
+  chartMonth = new Chart(document.getElementById("chartMonth"), {
+    type: "bar",
+    data: { labels: MONTHS, datasets: [{ label: "km en zone", data: byMonth.map(v => +v.toFixed(1)), backgroundColor: "#F2A3AF", hoverBackgroundColor: "#E31837", borderRadius: 4 }] },
+    options: {
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: "#ECE8E1" } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // Tableau (200 premières lignes)
+  const MAXROWS = 200;
+  const body = document.getElementById("tableBody");
+  body.innerHTML = "";
+  for (const r of lastResults.slice(0, MAXROWS)) {
+    const tr = document.createElement("tr");
+    const d = r.a.ts ? new Date(r.a.ts).toLocaleDateString("fr-FR") : "—";
+    tr.innerHTML = "<td>" + d + "</td>" +
+      "<td><span class='fname'>" + esc(r.a.name) + "</span></td>" +
+      "<td class='muted'>" + esc(r.a.sport) + "</td>" +
+      "<td class='r km-cell'>" + fmtKm(r.km) + "</td>" +
+      "<td class='r'>" + fmtKm(r.a.totalKm) + "</td>" +
+      "<td class='r'>" + r.passages + "</td>";
+    body.appendChild(tr);
+  }
+  document.getElementById("tableInfo").textContent =
+    n > MAXROWS ? "· " + MAXROWS + " affichées sur " + n + " (CSV complet via l'export)" : "· " + n + " activités";
+}
+
+function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+
+/* ---------- Export CSV ---------- */
+document.getElementById("btnCsv").addEventListener("click", () => {
+  let csv = "date;activite;sport;km_zone;km_total;passages\n";
+  for (const r of lastResults) {
+    const d = r.a.ts ? new Date(r.a.ts).toISOString().slice(0, 10) : "";
+    csv += d + ";\"" + r.a.name.replace(/"/g, '""') + "\";" +
+      "\"" + r.a.sport.replace(/"/g, '""') + "\";" +
+      r.km.toFixed(2).replace(".", ",") + ";" +
+      r.a.totalKm.toFixed(2).replace(".", ",") + ";" + r.passages + "\n";
+  }
+  const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
+  const aEl = document.createElement("a");
+  aEl.href = URL.createObjectURL(blob);
+  aEl.download = "dans-ma-zone.csv";
+  aEl.click();
+  URL.revokeObjectURL(aEl.href);
+});
+</script>
+</body>
+</html>
