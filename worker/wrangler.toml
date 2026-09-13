@@ -1,0 +1,17 @@
+name = "dans-ma-zone-strava"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Créé par : wrangler d1 create dans-ma-zone
+# → colle ici le database_id renvoyé par la commande
+[[d1_databases]]
+binding = "DB"
+database_name = "dans-ma-zone"
+database_id = "COLLE-ICI-L-ID-RENVOYE-PAR-WRANGLER-D1-CREATE"
+
+# Valeurs publiques (le secret du client, lui, ne va JAMAIS ici : voir README,
+# il se règle avec `wrangler secret put`)
+[vars]
+CORS_ORIGIN = "https://n58s29.github.io"
+FRONTEND_URL = "https://n58s29.github.io/dans-ma-zone/"
+STRAVA_CLIENT_ID = "COLLE-ICI-TON-CLIENT-ID-STRAVA"
