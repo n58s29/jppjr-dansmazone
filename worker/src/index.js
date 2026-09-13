@@ -31,15 +31,15 @@ function corsHeaders(env) {
   return {
     "Access-Control-Allow-Origin": env.CORS_ORIGIN,
     "Access-Control-Allow-Credentials": "true",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
   };
 }
 
-function json(env, data, status = 200) {
+function json(env, data, status = 200, extraHeaders) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { "Content-Type": "application/json", ...corsHeaders(env) },
+    headers: { "Content-Type": "application/json", ...corsHeaders(env), ...extraHeaders },
   });
 }
 
@@ -59,12 +59,24 @@ function parseCookies(request) {
   return out;
 }
 
-// SameSite=None : nécessaire car le front-end (GitHub Pages) et le Worker
-// sont sur des domaines différents, donc les appels fetch() sont "cross-site".
+// SameSite=None : posé en secours pour les navigateurs qui acceptent encore
+// les cookies cross-site. Beaucoup de navigateurs mobiles (Chrome Android,
+// Safari…) les bloquent car front-end (GitHub Pages) et Worker sont sur des
+// domaines différents : le vrai transport de session, c'est le token Bearer
+// (voir getSessionId), stocké en localStorage côté front.
 function sessionCookie(value, maxAgeSeconds) {
   let c = `${SESSION_COOKIE}=${value}; Path=/; HttpOnly; Secure; SameSite=None`;
   if (maxAgeSeconds !== undefined) c += `; Max-Age=${maxAgeSeconds}`;
   return c;
+}
+
+// Session envoyée soit en "Authorization: Bearer <id>" (méthode principale,
+// insensible aux blocages de cookies tiers), soit via le cookie (secours).
+function getSessionId(request) {
+  const auth = request.headers.get("Authorization") || "";
+  const m = auth.match(/^Bearer\s+(.+)$/i);
+  if (m) return m[1];
+  return parseCookies(request)[SESSION_COOKIE] || null;
 }
 
 // ---------- Sport : mêmes règles que côté client (sportKeyword du front) ----------
@@ -106,7 +118,7 @@ function downsample(latlngPairs) {
 // ---------- Accès Strava ----------
 
 async function getAthleteBySession(env, request) {
-  const sid = parseCookies(request)[SESSION_COOKIE];
+  const sid = getSessionId(request);
   if (!sid) return null;
   const row = await env.DB.prepare(
     `SELECT a.* FROM sessions s JOIN athletes a ON a.id = s.athlete_id
@@ -217,24 +229,22 @@ async function handleCallback(url, env, request) {
     `INSERT INTO sessions (session_id, athlete_id, created_at, expires_at) VALUES (?,?,?,?)`
   ).bind(sid, ath.id, now, expiresAt).run();
 
+  const redirectUrl = new URL(env.FRONTEND_URL);
+  redirectUrl.searchParams.set("session", sid);
   return new Response(null, {
     status: 302,
     headers: {
-      Location: env.FRONTEND_URL,
+      Location: redirectUrl.toString(),
       "Set-Cookie": sessionCookie(sid, SESSION_DAYS * 86400),
     },
   });
 }
 
 async function handleLogout(env, request) {
-  const sid = parseCookies(request)[SESSION_COOKIE];
+  const sid = getSessionId(request);
   if (sid) await env.DB.prepare(`DELETE FROM sessions WHERE session_id=?`).bind(sid).run();
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: env.FRONTEND_URL,
-      "Set-Cookie": `${SESSION_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=None; Max-Age=0`,
-    },
+  return json(env, { ok: true }, 200, {
+    "Set-Cookie": `${SESSION_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=None; Max-Age=0`,
   });
 }
 
