@@ -7,11 +7,11 @@ compatibility_date = "2026-09-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "dans-ma-zone"
-database_id = "COLLE-ICI-L-ID-RENVOYE-PAR-WRANGLER-D1-CREATE"
+database_id = "fb279c5a-ceeb-44aa-bf92-f34bb2aece29"
 
 # Valeurs publiques (le secret du client, lui, ne va JAMAIS ici : voir README,
 # il se règle avec `wrangler secret put`)
 [vars]
 CORS_ORIGIN = "https://n58s29.github.io"
-FRONTEND_URL = "https://n58s29.github.io/dans-ma-zone/"
-STRAVA_CLIENT_ID = "COLLE-ICI-TON-CLIENT-ID-STRAVA"
+FRONTEND_URL = "https://n58s29.github.io/jppjr-dansmazone/"
+STRAVA_CLIENT_ID = "279022"
