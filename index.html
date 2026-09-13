@@ -91,7 +91,8 @@
   .filters h2{margin-bottom:10px}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;
-    padding:6px 14px;font-size:13.5px;cursor:pointer;user-select:none;background:var(--bg);color:var(--ink-2)}
+    padding:6px 14px;font-size:13.5px;cursor:pointer;user-select:none;background:var(--bg);color:var(--ink-2);
+    font-family:inherit;line-height:1.3}
   .chip input{accent-color:var(--red)}
   .chip.on{background:var(--red-soft);border-color:var(--red);color:var(--ink)}
   .chip .c{font-size:12px;opacity:.75}
@@ -148,47 +149,201 @@
   td .fname{color:var(--ink-2);font-size:12px;display:block;max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .km-cell{font-weight:700;color:var(--red)}
   .muted{color:var(--ink-2);font-size:13px}
-  .hidden{display:none}
+  .hidden{display:none!important}
   .leaflet-draw-toolbar a{background-color:#fff}
+
+  /* ---- Header : compte Strava, sous-barre ---- */
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-strava{background:#FC4C02;color:#fff;gap:8px}
+  .btn-strava:hover{background:#E34402}
+  .btn-strava svg{fill:currentColor}
+  .ico{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .icon-btn{
+    width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);
+    color:var(--ink-2);font-weight:700;cursor:pointer;display:inline-flex;align-items:center;
+    justify-content:center;font-family:inherit;font-size:15px;flex:none;
+  }
+  .icon-btn:hover{background:var(--bg);color:var(--ink)}
+  .icon-btn svg{width:16px;height:16px}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;
+    padding:4px 5px 4px 12px;background:var(--card);font-size:13.5px;font-weight:600;
+  }
+  .pill .strava{width:18px;height:18px;fill:#FC4C02;flex:none}
+  .pill .icon-btn{width:28px;height:28px;border:none;background:var(--bg)}
+  .pill .icon-btn:hover{background:var(--red-soft);color:var(--red)}
+  .subbar{flex-basis:100%;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
+  .subbar #status{flex:1;min-width:0}
+  .btn-sm.btn-ico{gap:6px}
+  .btn-sm.btn-ico svg{width:15px;height:15px}
+  .link-plain{color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .link-plain:hover{color:var(--ink);text-decoration:underline}
+
+  /* ---- Pop-up d'accueil ---- */
+  dialog.modal{border:none;border-radius:14px;padding:0;max-width:540px;width:calc(100% - 28px);
+    box-shadow:0 20px 60px rgba(30,30,40,.28);color:var(--ink)}
+  dialog.modal::backdrop{background:rgba(30,30,40,.5)}
+  .modal-body{padding:26px 26px 22px}
+  .modal-body h2{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:6px}
+  .modal-body h2 em{font-style:normal;color:var(--red)}
+  .modal-body .lead{color:var(--ink-2);font-size:14.5px;margin-bottom:18px}
+  .how{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+  .how .step{min-width:0;flex:none}
+  .modal-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+  .modal-actions .left{margin-right:auto}
+  .notice{background:#FFF4E5;border:1px solid #F5C98A;color:#7A4B00;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13.5px}
+
+  /* ---- Période & zones ---- */
+  .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  @media(max-width:860px){.toolbar{grid-template-columns:1fr}}
+  .period{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .period input[type=date]{
+    border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit;font-size:13.5px;
+    color:var(--ink);background:var(--bg);min-width:0;
+  }
+  .period .sep{color:var(--ink-2);font-size:13px}
+  .presets{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .zone-save{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;align-items:center;padding:12px 16px;border-color:var(--red)}
+  .zone-save .zs-label{font-size:13.5px;color:var(--ink-2);flex-basis:100%}
+  .zone-save .zs-label b{color:var(--ink)}
+  .zone-save input{flex:1;min-width:160px;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font:inherit;font-size:14px}
+  .chip.zone{background:var(--card)}
+  .chip .by{font-size:12px;color:var(--ink-2);font-weight:400}
+  .chip.on .by{color:var(--ink-2)}
+  .chip .x{border:none;background:none;color:var(--ink-2);cursor:pointer;font-size:15px;line-height:1;padding:0 0 0 2px;font-family:inherit}
+  .chip .x:hover{color:var(--red)}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table-head .spacer{flex:1}
+
+  /* ---- Mobile ---- */
+  @media(max-width:700px){
+    header{padding:10px 14px;gap:10px}
+    main{padding:14px 12px 50px}
+    .brand h1{font-size:15px}
+    .brand .logo{width:30px;height:30px}
+    .subbar{flex-wrap:nowrap;gap:8px;font-size:12.5px}
+    .subbar .btn-sm{padding:6px 10px;font-size:12.5px;white-space:nowrap}
+    .hide-sm{display:none!important}
+    .hero{padding:22px 18px}
+    .hero h2{font-size:22px}
+    .hero p{font-size:14px}
+    .steps{gap:8px}
+    .step{min-width:0;flex:1 1 30%;padding:10px 8px;flex-direction:column;align-items:center;text-align:center;gap:6px;font-size:12px}
+    .step b{font-size:12.5px;margin:0}
+    .step .d{display:none}
+    .how .step{flex-direction:row;align-items:flex-start;text-align:left;padding:10px 12px;font-size:13px}
+    .how .step .d{display:inline}
+    .how .step b{font-size:13.5px;margin-bottom:2px}
+    main{display:flex;flex-direction:column}
+    #toolbar{order:1}
+    .map-wrap{order:2}
+    #zoneSave{order:3}
+    #kpis{order:4;margin-top:12px}
+    #filters,#athleteFilters{order:5}
+    #charts{order:6;margin-top:0}
+    #tableCard{order:7}
+    .map-tools{top:8px;right:8px;left:8px;justify-content:space-between;gap:8px;padding:6px 8px}
+    .draw-tip{white-space:normal;text-align:center;left:8px;right:8px;transform:none;font-size:12.5px}
+    #map{height:400px}
+    .kpi .v{font-size:22px}
+    .chart-box{height:220px}
+    td .fname{max-width:180px}
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="brand"><img class="logo" src="data:image/png;base64,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" alt="Bob Team JPPJR"><h1>Dans Ma Zone</h1><span class="badge">Team JPPJR</span></div>
+  <div class="brand"><img class="logo" src="data:image/png;base64,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" alt="Bob Team JPPJR"><h1>Dans Ma Zone</h1><span class="badge hide-sm">Team JPPJR</span></div>
   <div class="spacer"></div>
-  <span id="status">Non connecté</span>
-  <div class="progress" id="progress"><i id="progressBar"></i></div>
-  <button class="btn btn-ghost hidden" id="btnCsv">Exporter le CSV</button>
-  <a class="btn btn-ghost" href="https://n58s29.github.io/jppjr-planning/" target="_blank" rel="noopener">Planning de la team</a>
-  <button class="btn btn-ghost hidden" id="btnSync">Synchroniser</button>
-  <button class="btn btn-ghost hidden" id="btnLogout">Se déconnecter</button>
-  <button class="btn btn-primary" id="btnConnect">Se connecter à Strava</button>
+  <a class="link-plain hide-sm" href="https://n58s29.github.io/jppjr-planning/" target="_blank" rel="noopener">Planning de la team</a>
+  <button class="icon-btn" id="btnHelp" title="Comment ça marche ?" aria-label="Aide">?</button>
+  <button class="btn btn-strava" id="btnConnect">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+    Se connecter
+  </button>
+  <div class="pill hidden" id="accountPill">
+    <svg class="strava" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+    <span id="accountName"></span>
+    <button class="icon-btn" id="btnLogout" title="Se déconnecter" aria-label="Se déconnecter">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
+  </div>
+  <div class="subbar hidden" id="subbar">
+    <span id="status"></span>
+    <div class="progress" id="progress"><i id="progressBar"></i></div>
+    <span class="spacer"></span>
+    <button class="btn btn-ghost btn-sm btn-ico" id="btnSync">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+      Synchroniser Strava
+    </button>
+  </div>
 </header>
 
+<dialog class="modal" id="onboarding">
+  <div class="modal-body">
+    <h2>Combien de kilomètres as-tu vraiment mis <em>dans ta zone</em> ?</h2>
+    <p class="lead">Dessine un périmètre sur la carte — ton quartier, ta boucle fétiche, ta ville — et l'appli compte ce que toi et la team y avez couru, roulé, marché.</p>
+    <div class="how">
+      <div class="step"><span class="n">1</span><div><b>Connecte ton Strava</b><span class="d">Lecture seule de tes activités (y compris « Uniquement moi »). Puis « Synchroniser » pour récupérer tes traces GPS — la première fois, ça peut prendre quelques minutes.</span></div></div>
+      <div class="step"><span class="n">2</span><div><b>Choisis une zone</b><span class="d">Prends une zone de l'équipe déjà enregistrée, ou dessine la tienne : touche la carte pour poser les sommets, puis « Terminer la zone ». Tu peux l'enregistrer pour que tout le monde ait les mêmes calculs.</span></div></div>
+      <div class="step"><span class="n">3</span><div><b>Lis les chiffres</b><span class="d">Kilomètres dans la zone, passages, graphiques par année et par mois, filtres par sport, coéquipier et période.</span></div></div>
+    </div>
+    <div class="modal-actions">
+      <a class="link-plain left" href="https://n58s29.github.io/jppjr-planning/" target="_blank" rel="noopener">Planning de la team ↗</a>
+      <button class="btn btn-ghost" id="btnOnboardingClose">Compris</button>
+      <button class="btn btn-strava" id="btnOnboardingConnect">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+        Se connecter avec Strava
+      </button>
+    </div>
+  </div>
+</dialog>
+
 <main>
+  <div class="notice hidden" id="notice"></div>
+
   <section class="hero" id="hero">
     <h2>Combien de kilomètres as-tu vraiment mis <em>dans ta zone</em> ?</h2>
-    <p>Importe tes traces, dessine ta zone : place aux chiffres.<br>
+    <p>Connecte ton Strava, dessine ta zone : place aux chiffres.<br>
     Signé la team JPPJR — Je peux pas j'ai running.</p>
-    <button class="btn btn-primary" id="btnHeroConnect">Se connecter à Strava</button>
+    <button class="btn btn-strava" id="btnHeroConnect">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+      Se connecter avec Strava
+    </button>
     <ul class="hero-points">
       <li>Tes activités Strava (course, vélo, marche…) importées automatiquement</li>
       <li>Vue d'équipe : les traces de tous les coéquipiers connectés, cumulées</li>
       <li>Zones de confidentialité Strava respectées, données jamais revendues</li>
     </ul>
-    <details>
-      <summary>Comment ça marche ?</summary>
-      <p><b>1. Connexion</b> — Tu autorises l'appli à lire tes activités Strava (lecture seule, y compris les activités « Uniquement moi »).</p>
-      <p><b>2. Synchro</b> — Le bouton « Synchroniser » va chercher tes activités et leurs traces GPS au fur et à mesure ; la première synchro peut prendre plusieurs minutes si tu as un long historique.</p>
-      <p><b>3. Équipe</b> — Chaque coéquipier qui se connecte à son tour vient s'ajouter à la carte et aux stats, avec un filtre par personne comme pour les sports.</p>
-    </details>
   </section>
 
   <div class="steps">
-    <div class="step" id="step1"><span class="n">1</span><div><b>Se connecter</b>Connectez votre compte Strava, puis lancez une synchronisation.</div></div>
-    <div class="step" id="step2"><span class="n">2</span><div><b>Dessiner la zone</b>Bouton « Dessiner une zone » en haut à droite de la carte : cliquez pour poser les sommets, double-clic pour fermer.</div></div>
-    <div class="step" id="step3"><span class="n">3</span><div><b>Analyser</b>Les kilomètres dans la zone, les passages et les graphiques se calculent aussitôt.</div></div>
+    <div class="step" id="step1"><span class="n">1</span><div><b>Se connecter</b><span class="d">Connecte ton compte Strava, puis lance une synchronisation.</span></div></div>
+    <div class="step" id="step2"><span class="n">2</span><div><b>Choisir une zone</b><span class="d">Charge une zone de l'équipe, ou dessine la tienne : touche la carte pour poser les sommets, puis « Terminer la zone ».</span></div></div>
+    <div class="step" id="step3"><span class="n">3</span><div><b>Analyser</b><span class="d">Les kilomètres dans la zone, les passages et les graphiques se calculent aussitôt.</span></div></div>
+  </div>
+
+  <div class="toolbar hidden" id="toolbar">
+    <div class="card">
+      <h2>Période <span>— seules les activités de cette période comptent</span></h2>
+      <div class="period">
+        <input type="date" id="dateFrom" aria-label="Du">
+        <span class="sep">→</span>
+        <input type="date" id="dateTo" aria-label="Au">
+      </div>
+      <div class="presets" id="presets">
+        <button class="chip on" data-preset="all">Tout</button>
+        <button class="chip" data-preset="year">Cette année</button>
+        <button class="chip" data-preset="lastyear">Année dernière</button>
+        <button class="chip" data-preset="12m">12 derniers mois</button>
+        <button class="chip" data-preset="month">Ce mois-ci</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Zones de l'équipe <span>— une zone partagée = les mêmes calculs pour tout le monde</span></h2>
+      <div class="chips" id="zoneChips"></div>
+    </div>
   </div>
 
   <div class="card filters hidden" id="filters">
@@ -214,12 +369,17 @@
 
   <div class="map-wrap">
     <div id="map"></div>
-    <div class="map-hint" id="mapHint">Importez d'abord vos fichiers, la carte se centrera sur vos traces.</div>
+    <div class="map-hint" id="mapHint">Connecte-toi à Strava : la carte se centrera sur les traces de l'équipe.</div>
     <div class="map-tools">
       <button class="btn btn-primary btn-sm" id="btnDraw">Dessiner une zone</button>
       <button class="btn btn-ghost btn-sm hidden" id="btnClearZone">Supprimer la zone</button>
       <label><input type="checkbox" id="chkHeat" checked> Traces</label>
     </div>
+  </div>
+  <div class="zone-save card hidden" id="zoneSave">
+    <span class="zs-label"><b>Zone dessinée.</b> Donne-lui un nom pour la partager avec l'équipe :</span>
+    <input id="zoneName" placeholder="Nom de la zone (ex. Boucle du lac)" maxlength="60">
+    <button class="btn btn-primary btn-sm" id="btnSaveZone">Enregistrer pour l'équipe</button>
   </div>
 
   <div class="grid-2 hidden" id="charts">
@@ -236,7 +396,10 @@
   <div class="card table-card hidden" id="tableCard">
     <div class="table-head">
       <h2>Activités traversant la zone <span id="tableInfo"></span></h2>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost btn-sm" id="btnCsv">Exporter le CSV</button>
     </div>
+    <div class="table-scroll">
     <table>
       <thead><tr>
         <th>Date</th><th>Activité</th><th>Sport</th><th>Athlète</th>
@@ -244,6 +407,7 @@
       </tr></thead>
       <tbody id="tableBody"></tbody>
     </table>
+    </div>
   </div>
 </main>
 
@@ -259,7 +423,15 @@ let lastResults = [];    // résultats du dernier calcul de zone
 let chartYear = null, chartMonth = null;
 const activeSports = new Set();
 const activeAthletes = new Set();
-function filtered() { return activities.filter(a => activeSports.has(a.sport) && activeAthletes.has(a.athlete)); }
+let periodFrom = null, periodTo = null; // bornes en ms, null = pas de borne
+function inPeriod(a) {
+  if (periodFrom && a.ts < periodFrom) return false;
+  if (periodTo && a.ts > periodTo) return false;
+  return true;
+}
+function filtered() {
+  return activities.filter(a => activeSports.has(a.sport) && activeAthletes.has(a.athlete) && inPeriod(a));
+}
 
 function buildAthleteFilters() {
   const counts = new Map();
@@ -397,15 +569,22 @@ const WORKER_URL = "https://dans-ma-zone-strava.gentillebelette.workers.dev";
 // en en-tête Authorization à chaque appel — insensible à ce blocage.
 const SESSION_KEY = "dmz_session";
 
-(function captureSessionToken() {
+(function captureUrlParams() {
   const params = new URLSearchParams(location.search);
   const token = params.get("session");
-  if (!token) return;
-  localStorage.setItem(SESSION_KEY, token);
-  params.delete("session");
+  const strava = params.get("strava");
+  if (!token && !strava) return;
+  if (token) localStorage.setItem(SESSION_KEY, token);
+  params.delete("session"); params.delete("strava");
   const qs = params.toString();
   history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
+  if (strava === "forbidden") showNotice("Ton compte Strava n'est pas (encore) dans la liste de l'équipe — demande à l'admin de la team (Mario) de t'ajouter, puis reconnecte-toi.");
+  if (strava === "denied") showNotice("Connexion annulée : tu n'as pas autorisé l'accès à Strava. Réessaie quand tu veux.");
 })();
+function showNotice(msg) {
+  const n = document.getElementById("notice");
+  n.textContent = msg; n.classList.remove("hidden");
+}
 
 const statusEl = document.getElementById("status");
 const progress = document.getElementById("progress");
@@ -413,14 +592,22 @@ const progressBar = document.getElementById("progressBar");
 const btnConnect = document.getElementById("btnConnect");
 const btnSync = document.getElementById("btnSync");
 const btnLogout = document.getElementById("btnLogout");
+const accountPill = document.getElementById("accountPill");
+const subbar = document.getElementById("subbar");
+let currentAthleteId = null;
 
-function goConnect() { window.location.href = WORKER_URL + "/auth/login"; }
+function goConnect() {
+  localStorage.setItem(ONBOARDED_KEY, "1");
+  window.location.href = WORKER_URL + "/auth/login";
+}
 btnConnect.addEventListener("click", goConnect);
 document.getElementById("btnHeroConnect").addEventListener("click", goConnect);
+document.getElementById("btnOnboardingConnect").addEventListener("click", goConnect);
 btnLogout.addEventListener("click", async () => {
-  await apiPost("/auth/logout");
+  if (!confirm("Se déconnecter de Dans Ma Zone ?")) return;
+  await apiPost("/auth/logout").catch(() => {});
   localStorage.removeItem(SESSION_KEY);
-  refreshMe();
+  location.reload();
 });
 
 function authHeaders() {
@@ -439,6 +626,26 @@ async function apiPost(path, body) {
   });
   return r.json();
 }
+async function apiDelete(path) {
+  const r = await fetch(WORKER_URL + path, { method: "DELETE", credentials: "include", headers: authHeaders() });
+  return r.json();
+}
+
+/* ---------- Pop-up d'accueil ---------- */
+const ONBOARDED_KEY = "dmz_onboarded";
+const onboarding = document.getElementById("onboarding");
+function openOnboarding() {
+  document.getElementById("btnOnboardingConnect").classList.toggle("hidden", !!currentAthleteId);
+  if (typeof onboarding.showModal === "function") onboarding.showModal();
+  else onboarding.setAttribute("open", "");
+}
+function closeOnboarding() {
+  if (typeof onboarding.close === "function") onboarding.close();
+  else onboarding.removeAttribute("open");
+}
+onboarding.addEventListener("close", () => localStorage.setItem(ONBOARDED_KEY, "1"));
+document.getElementById("btnHelp").addEventListener("click", openOnboarding);
+document.getElementById("btnOnboardingClose").addEventListener("click", closeOnboarding);
 
 async function loadTeamActivities() {
   const data = await apiGet("/api/team-activities");
@@ -450,35 +657,143 @@ async function loadTeamActivities() {
     a.athlete = o.athlete;
     activities.push(a);
   }
-  const totalKm = activities.reduce((s, a) => s + a.totalKm, 0);
-  statusEl.innerHTML = "Connecté · <strong>" + activities.length + "</strong> activités · " + fmtKm(totalKm) + " km";
   document.getElementById("step1").classList.add("done");
-  if (activities.length) document.getElementById("hero").classList.add("hidden");
+  const mapHint = document.getElementById("mapHint");
+
+  if (!activities.length) {
+    statusEl.innerHTML = "Aucune activité pour l'instant — clique sur <strong>Synchroniser Strava</strong>.";
+    mapHint.style.display = "";
+    mapHint.textContent = "Lance une synchro Strava : la carte se centrera sur les traces.";
+    return;
+  }
+
+  const totalKm = activities.reduce((s, a) => s + a.totalKm, 0);
+  statusEl.innerHTML = "<strong>" + activities.length + "</strong> activités · " + fmtKm(totalKm) + " km<span class='hide-sm'> dans l'équipe</span>";
+  document.getElementById("hero").classList.add("hidden");
+  document.getElementById("toolbar").classList.remove("hidden");
 
   buildFilters();
   buildAthleteFilters();
   drawHeatmap();
-  fitToData();
-  document.getElementById("mapHint").textContent = "Cliquez sur « Dessiner une zone » en haut à droite de la carte.";
-  setTimeout(() => document.getElementById("mapHint").style.display = "none", 3500);
-  if (zoneRing) computeZone(); // recalcul si une zone existait déjà
+  if (zoneRing) computeZone(); else fitToData();
+  mapHint.textContent = "Choisis une zone de l'équipe, ou « Dessiner une zone » sur la carte.";
+  mapHint.style.display = "";
+  setTimeout(() => mapHint.style.display = "none", 3500);
 }
 
 async function refreshMe() {
-  const me = await apiGet("/api/me");
+  const me = await apiGet("/api/me").catch(() => ({ connected: false }));
   if (me.connected) {
+    currentAthleteId = me.athlete.id;
     btnConnect.classList.add("hidden");
-    btnSync.classList.remove("hidden");
-    btnLogout.classList.remove("hidden");
-    statusEl.textContent = "Connecté : " + me.athlete.firstname;
-    await loadTeamActivities();
+    accountPill.classList.remove("hidden");
+    subbar.classList.remove("hidden");
+    document.getElementById("accountName").textContent = me.athlete.firstname;
+    statusEl.textContent = "Chargement des activités…";
+    await Promise.all([loadTeamActivities(), loadZones()]);
   } else {
+    currentAthleteId = null;
     btnConnect.classList.remove("hidden");
-    btnSync.classList.add("hidden");
-    btnLogout.classList.add("hidden");
-    statusEl.textContent = "Non connecté";
+    accountPill.classList.add("hidden");
+    subbar.classList.add("hidden");
+  }
+  if (!localStorage.getItem(ONBOARDED_KEY)) openOnboarding();
+}
+
+/* ---------- Période ---------- */
+const dateFrom = document.getElementById("dateFrom"), dateTo = document.getElementById("dateTo");
+function fmtInput(d) {
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function setPeriod(from, to, presetKey) {
+  periodFrom = from ? from.getTime() : null;
+  periodTo = to ? new Date(to.getFullYear(), to.getMonth(), to.getDate(), 23, 59, 59, 999).getTime() : null;
+  dateFrom.value = from ? fmtInput(from) : "";
+  dateTo.value = to ? fmtInput(to) : "";
+  document.querySelectorAll("#presets .chip").forEach(c => c.classList.toggle("on", c.dataset.preset === presetKey));
+  refreshAfterFilter();
+}
+document.getElementById("presets").addEventListener("click", e => {
+  const btn = e.target.closest("[data-preset]");
+  if (!btn) return;
+  const now = new Date(), y = now.getFullYear(), m = now.getMonth();
+  switch (btn.dataset.preset) {
+    case "all":      setPeriod(null, null, "all"); break;
+    case "year":     setPeriod(new Date(y, 0, 1), now, "year"); break;
+    case "lastyear": setPeriod(new Date(y - 1, 0, 1), new Date(y - 1, 11, 31), "lastyear"); break;
+    case "12m":      setPeriod(new Date(y - 1, m, now.getDate()), now, "12m"); break;
+    case "month":    setPeriod(new Date(y, m, 1), now, "month"); break;
+  }
+});
+function readPeriodInputs() {
+  const f = dateFrom.value ? new Date(dateFrom.value + "T00:00:00") : null;
+  const t = dateTo.value ? new Date(dateTo.value + "T00:00:00") : null;
+  setPeriod(f, t, (!f && !t) ? "all" : null);
+}
+dateFrom.addEventListener("change", readPeriodInputs);
+dateTo.addEventListener("change", readPeriodInputs);
+
+/* ---------- Zones de l'équipe ---------- */
+let teamZones = [], currentZoneId = null;
+const zoneChips = document.getElementById("zoneChips");
+const zoneSave = document.getElementById("zoneSave");
+const zoneNameInput = document.getElementById("zoneName");
+
+async function loadZones() {
+  const data = await apiGet("/api/zones").catch(() => ({}));
+  teamZones = data.zones || [];
+  renderZoneChips();
+}
+
+function renderZoneChips() {
+  zoneChips.innerHTML = "";
+  if (!teamZones.length) {
+    zoneChips.innerHTML = "<span class='muted'>Aucune zone enregistrée pour l'instant. Dessine une zone sur la carte, puis donne-lui un nom ici pour la partager.</span>";
+    return;
+  }
+  for (const z of teamZones) {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "chip zone" + (z.id === currentZoneId ? " on" : "");
+    chip.innerHTML = esc(z.name) + " <span class='by'>· " + esc(z.createdByName || "?") + "</span>";
+    chip.addEventListener("click", () => applyZone(z));
+    if (z.createdBy === currentAthleteId) {
+      const x = document.createElement("span");
+      x.className = "x"; x.title = "Supprimer cette zone"; x.textContent = "×";
+      x.addEventListener("click", async ev => {
+        ev.stopPropagation();
+        if (!confirm("Supprimer la zone « " + z.name + " » pour toute l'équipe ?")) return;
+        await apiDelete("/api/zones?id=" + z.id).catch(() => {});
+        if (currentZoneId === z.id) clearZone();
+        await loadZones();
+      });
+      chip.appendChild(x);
+    }
+    zoneChips.appendChild(chip);
   }
 }
+
+function applyZone(z) {
+  setZone(z.ring, z.id);
+  map.fitBounds(z.ring, { padding: [30, 30] });
+}
+
+async function saveZone() {
+  if (!zoneRing) return;
+  const name = zoneNameInput.value.trim();
+  if (!name) { zoneNameInput.focus(); return; }
+  const btn = document.getElementById("btnSaveZone");
+  btn.disabled = true;
+  const r = await apiPost("/api/zones", { name, ring: zoneRing }).catch(() => ({ error: "réseau" }));
+  btn.disabled = false;
+  if (r.error) { alert("Impossible d'enregistrer la zone (" + r.error + ")."); return; }
+  currentZoneId = r.id;
+  zoneNameInput.value = "";
+  zoneSave.classList.add("hidden");
+  await loadZones();
+}
+document.getElementById("btnSaveZone").addEventListener("click", saveZone);
+zoneNameInput.addEventListener("keydown", e => { if (e.key === "Enter") saveZone(); });
 
 btnSync.addEventListener("click", async () => {
   btnSync.disabled = true;
@@ -524,7 +839,7 @@ const btnClearZone = document.getElementById("btnClearZone");
 const mapWrap = document.querySelector(".map-wrap");
 
 btnDraw.addEventListener("click", () => drawing ? finishDraw() : startDraw());
-btnClearZone.addEventListener("click", clearZone);
+btnClearZone.addEventListener("click", () => drawing ? cancelDraw() : clearZone());
 document.addEventListener("keydown", e => { if (e.key === "Escape" && drawing) cancelDraw(); });
 
 function startDraw() {
@@ -533,10 +848,12 @@ function startDraw() {
   map.doubleClickZoom.disable();
   mapWrap.classList.add("drawing");
   btnDraw.textContent = "Terminer la zone";
+  btnClearZone.textContent = "Annuler";
+  btnClearZone.classList.remove("hidden");
   document.getElementById("mapHint").style.display = "none";
   drawTip = document.createElement("div");
   drawTip.className = "draw-tip";
-  drawTip.textContent = "Cliquez pour poser les sommets · double-clic ou clic sur le 1er point pour fermer · Échap pour annuler";
+  drawTip.textContent = "Touche la carte pour poser les sommets, puis « Terminer la zone » (ou re-touche le 1er point).";
   mapWrap.appendChild(drawTip);
 }
 
@@ -559,6 +876,8 @@ function cleanupDraw() {
   map.doubleClickZoom.enable();
   mapWrap.classList.remove("drawing");
   btnDraw.textContent = "Dessiner une zone";
+  btnClearZone.textContent = "Supprimer la zone";
+  if (!zoneRing) btnClearZone.classList.add("hidden");
   if (tempLine) { map.removeLayer(tempLine); tempLine = null; }
   tempMarkers.forEach(m => map.removeLayer(m)); tempMarkers = [];
   if (drawTip) { drawTip.remove(); drawTip = null; }
@@ -571,17 +890,31 @@ function finishDraw() {
   const pts = drawPts.filter((p, i) => i === 0 || p[0] !== drawPts[i-1][0] || p[1] !== drawPts[i-1][1]);
   cleanupDraw();
   if (pts.length < 3) { drawPts = []; return; }
-  zoneRing = pts;
-  zoneLayer = L.polygon(pts, zoneStyle).addTo(map);
+  setZone(pts, null);
+}
+
+// Zone courante : dessinée à la main (id null → proposer l'enregistrement)
+// ou chargée depuis les zones de l'équipe (id renseigné).
+function setZone(ring, id) {
+  if (zoneLayer) map.removeLayer(zoneLayer);
+  zoneRing = ring;
+  currentZoneId = id ?? null;
+  zoneLayer = L.polygon(ring, zoneStyle).addTo(map);
+  btnClearZone.textContent = "Supprimer la zone";
   btnClearZone.classList.remove("hidden");
   document.getElementById("step2").classList.add("done");
+  zoneSave.classList.toggle("hidden", currentZoneId !== null);
+  renderZoneChips();
   computeZone();
 }
 
 function clearZone() {
   if (zoneLayer) { map.removeLayer(zoneLayer); zoneLayer = null; }
   zoneRing = null;
+  currentZoneId = null;
   btnClearZone.classList.add("hidden");
+  zoneSave.classList.add("hidden");
+  renderZoneChips();
   resetResults();
 }
 

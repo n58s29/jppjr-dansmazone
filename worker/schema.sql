@@ -30,3 +30,13 @@ CREATE TABLE IF NOT EXISTS sessions (
   created_at  INTEGER NOT NULL,
   expires_at  INTEGER NOT NULL
 );
+
+-- Zones dessinées et partagées avec toute l'équipe : chacun peut charger la
+-- même zone et obtenir ses propres chiffres sur un périmètre identique.
+CREATE TABLE IF NOT EXISTS zones (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  name        TEXT NOT NULL,
+  ring        TEXT NOT NULL,                    -- JSON [[lat,lng],...]
+  created_by  INTEGER NOT NULL REFERENCES athletes(id),
+  created_at  INTEGER NOT NULL
+);

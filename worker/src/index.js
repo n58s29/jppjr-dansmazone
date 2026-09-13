@@ -32,7 +32,7 @@ function corsHeaders(env) {
     "Access-Control-Allow-Origin": env.CORS_ORIGIN,
     "Access-Control-Allow-Credentials": "true",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+    "Access-Control-Allow-Methods": "GET,POST,DELETE,OPTIONS",
   };
 }
 
@@ -336,6 +336,66 @@ async function handleTeamActivities(env, request) {
   return json(env, { activities: out });
 }
 
+// ---------- Zones partagées ----------
+
+async function handleZonesList(env, request) {
+  const athlete = await getAthleteBySession(env, request);
+  if (!athlete) return json(env, { error: "not_connected" }, 401);
+
+  const rows = await env.DB.prepare(
+    `SELECT z.id, z.name, z.ring, z.created_by, z.created_at, a.firstname
+     FROM zones z JOIN athletes a ON a.id = z.created_by
+     ORDER BY z.created_at DESC`
+  ).all();
+
+  return json(env, {
+    zones: rows.results.map((r) => ({
+      id: r.id,
+      name: r.name,
+      ring: JSON.parse(r.ring),
+      createdBy: r.created_by,
+      createdByName: r.firstname || "",
+      createdAt: r.created_at,
+    })),
+  });
+}
+
+function isValidRing(ring) {
+  return Array.isArray(ring) && ring.length >= 3 && ring.length <= 500 &&
+    ring.every((p) => Array.isArray(p) && p.length === 2 &&
+      Number.isFinite(p[0]) && Number.isFinite(p[1]) &&
+      Math.abs(p[0]) <= 90 && Math.abs(p[1]) <= 180);
+}
+
+async function handleZoneCreate(env, request) {
+  const athlete = await getAthleteBySession(env, request);
+  if (!athlete) return json(env, { error: "not_connected" }, 401);
+
+  const body = await request.json().catch(() => null);
+  const name = typeof body?.name === "string" ? body.name.trim().slice(0, 60) : "";
+  if (!name || !isValidRing(body?.ring)) return json(env, { error: "invalid_zone" }, 400);
+
+  const res = await env.DB.prepare(
+    `INSERT INTO zones (name, ring, created_by, created_at) VALUES (?,?,?,?)`
+  ).bind(name, JSON.stringify(body.ring), athlete.id, Math.floor(Date.now() / 1000)).run();
+
+  return json(env, { id: res.meta.last_row_id });
+}
+
+async function handleZoneDelete(url, env, request) {
+  const athlete = await getAthleteBySession(env, request);
+  if (!athlete) return json(env, { error: "not_connected" }, 401);
+
+  const id = Number(url.searchParams.get("id"));
+  if (!Number.isInteger(id)) return json(env, { error: "invalid_id" }, 400);
+
+  // Seul l'auteur d'une zone peut la supprimer.
+  const res = await env.DB.prepare(`DELETE FROM zones WHERE id=? AND created_by=?`)
+    .bind(id, athlete.id).run();
+  if (!res.meta.changes) return json(env, { error: "not_found_or_forbidden" }, 404);
+  return json(env, { ok: true });
+}
+
 // ---------- Point d'entrée ----------
 
 export default {
@@ -353,6 +413,11 @@ export default {
       if (url.pathname === "/api/me") return await handleMe(env, request);
       if (url.pathname === "/api/sync" && request.method === "POST") return await handleSync(env, request);
       if (url.pathname === "/api/team-activities") return await handleTeamActivities(env, request);
+      if (url.pathname === "/api/zones") {
+        if (request.method === "GET") return await handleZonesList(env, request);
+        if (request.method === "POST") return await handleZoneCreate(env, request);
+        if (request.method === "DELETE") return await handleZoneDelete(url, env, request);
+      }
       return json(env, { error: "not_found" }, 404);
     } catch (e) {
       return json(env, { error: "server_error", detail: String(e && e.message || e) }, 500);
