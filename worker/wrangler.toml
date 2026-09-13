@@ -15,3 +15,7 @@ database_id = "fb279c5a-ceeb-44aa-bf92-f34bb2aece29"
 CORS_ORIGIN = "https://n58s29.github.io"
 FRONTEND_URL = "https://n58s29.github.io/jppjr-dansmazone/"
 STRAVA_CLIENT_ID = "279022"
+# IDs athlète Strava autorisés à se connecter (les tiens + tes potes),
+# séparés par des virgules. Vide = pas de restriction ici (repose alors
+# uniquement sur la liste d'accès de l'appli côté Strava, cf. README).
+ALLOWED_ATHLETE_IDS = ""

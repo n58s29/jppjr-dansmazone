@@ -50,6 +50,11 @@ Dans `wrangler.toml`, remplace :
   **sans** slash final)
 - `FRONTEND_URL` par l'URL complète de la page `index.html` (celle vers
   laquelle on redirige une fois connecté)
+- `ALLOWED_ATHLETE_IDS` (optionnel) par la liste des IDs athlète Strava
+  autorisés à se connecter, séparés par des virgules (ex. `"12345,67890"`).
+  Un coéquipier peut trouver son ID sur `strava.com/athlete/id` une fois
+  connecté à son compte. Laisser vide pour ne pas restreindre ici (la seule
+  barrière est alors la liste d'accès de l'étape 1, limitée à 10 comptes).
 
 ## 5. Déployer
 

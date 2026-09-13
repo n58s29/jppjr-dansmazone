@@ -162,6 +162,7 @@
   <button class="btn btn-ghost hidden" id="btnCsv">Exporter le CSV</button>
   <a class="btn btn-ghost" href="https://n58s29.github.io/jppjr-planning/" target="_blank" rel="noopener">Planning de la team</a>
   <button class="btn btn-ghost hidden" id="btnSync">Synchroniser</button>
+  <button class="btn btn-ghost hidden" id="btnLogout">Se déconnecter</button>
   <button class="btn btn-primary" id="btnConnect">Se connecter à Strava</button>
 </header>
 
@@ -394,10 +395,12 @@ const progress = document.getElementById("progress");
 const progressBar = document.getElementById("progressBar");
 const btnConnect = document.getElementById("btnConnect");
 const btnSync = document.getElementById("btnSync");
+const btnLogout = document.getElementById("btnLogout");
 
 function goConnect() { window.location.href = WORKER_URL + "/auth/login"; }
 btnConnect.addEventListener("click", goConnect);
 document.getElementById("btnHeroConnect").addEventListener("click", goConnect);
+btnLogout.addEventListener("click", () => { window.location.href = WORKER_URL + "/auth/logout"; });
 
 async function apiGet(path) {
   const r = await fetch(WORKER_URL + path, { credentials: "include" });
@@ -441,11 +444,13 @@ async function refreshMe() {
   if (me.connected) {
     btnConnect.classList.add("hidden");
     btnSync.classList.remove("hidden");
+    btnLogout.classList.remove("hidden");
     statusEl.textContent = "Connecté : " + me.athlete.firstname;
     await loadTeamActivities();
   } else {
     btnConnect.classList.remove("hidden");
     btnSync.classList.add("hidden");
+    btnLogout.classList.add("hidden");
     statusEl.textContent = "Non connecté";
   }
 }

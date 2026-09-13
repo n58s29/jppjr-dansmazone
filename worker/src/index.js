@@ -194,6 +194,13 @@ async function handleCallback(url, env, request) {
   }
 
   const ath = tok.athlete;
+
+  const allowedIds = (env.ALLOWED_ATHLETE_IDS || "")
+    .split(",").map((s) => s.trim()).filter(Boolean);
+  if (allowedIds.length && !allowedIds.includes(String(ath.id))) {
+    return Response.redirect(env.FRONTEND_URL + "?strava=forbidden", 302);
+  }
+
   const now = Math.floor(Date.now() / 1000);
   await env.DB.prepare(
     `INSERT INTO athletes (id, firstname, lastname, access_token, refresh_token, expires_at, scope, connected_at)
