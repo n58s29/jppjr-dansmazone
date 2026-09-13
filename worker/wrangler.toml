@@ -18,4 +18,4 @@ STRAVA_CLIENT_ID = "279022"
 # IDs athlète Strava autorisés à se connecter (les tiens + tes potes),
 # séparés par des virgules. Vide = pas de restriction ici (repose alors
 # uniquement sur la liste d'accès de l'appli côté Strava, cf. README).
-ALLOWED_ATHLETE_IDS = ""
+ALLOWED_ATHLETE_IDS = "2048350333,102906342,183006924,103923248,26034038,18305356,13319621,4084240"
